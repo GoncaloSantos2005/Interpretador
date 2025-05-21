@@ -1,6 +1,6 @@
 # Interpretador de Linha de Comandos em C
 
-Este projeto implementa um interpretador de linha de comandos personalizado em C, que permite executar comandos próprios para manipulação de ficheiros e diretórios, bem como comandos nativos do sistema.
+Este projeto implementa um interpretador de linha de comandos personalizado em C, que permite executar comandos próprios para manipulação de ficheiros e diretórios.
 
 ## Funcionalidades
 
