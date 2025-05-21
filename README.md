@@ -12,7 +12,6 @@ Este projeto implementa um interpretador de linha de comandos personalizado em C
 - `informa <ficheiro>`: Mostra informações detalhadas sobre um ficheiro, como tipo, i-node, dono e datas de criação/modificação/acesso.
 - `lista [diretoria]`: Lista o conteúdo de uma diretoria (se não for especificada, usa a atual).
 - `termina`: Encerra o interpretador.
-- **Comandos do sistema**: Qualquer outro comando é executado como um comando do sistema (por exemplo, `ls`, `cat`, `pwd`, etc.).
 
 ## Compilação
 
