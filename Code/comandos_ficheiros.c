@@ -48,6 +48,9 @@ int mostra(const char *filename) {
     
     // Fechar o ficheiro
     close(fd);
+
+    printf("\n\nFicheiro mostrado com sucesso.\n");
+
     return 0;
 }
 
@@ -101,7 +104,7 @@ int copia(const char *filename) {
     close(fd_src);
     close(fd_dest);
     
-    printf("Ficheiro copiado com sucesso para '%s'.\n", dest_filename);
+    printf("\n\nFicheiro copiado com sucesso para '%s'.\n", dest_filename);
     return 0;
 }
 
@@ -183,7 +186,7 @@ int acrescenta(const char *origem, const char *destino) {
     close(fd_src);
     close(fd_dest);
 
-    printf("Conteúdo de '%s' acrescentado com sucesso a '%s'.\n", origem, destino);
+    printf("\n\nConteúdo de '%s' acrescentado com sucesso a '%s'.\n", origem, destino);
     return 0;
 }
 
@@ -228,7 +231,7 @@ int conta(const char *filename) {
     // Fechar ficheiro
     close(fd);
     
-    printf("O ficheiro '%s' tem %d linhas.\n", filename, line_count);
+    printf("\n\nO ficheiro '%s' tem %d linhas.\n", filename, line_count);
     return 0;
 }
 
@@ -255,7 +258,7 @@ int apaga(const char *filename) {
         return 1;
     }
     
-    printf("Ficheiro '%s' removido com sucesso.\n", filename);
+    printf("\n\nFicheiro '%s' removido com sucesso.\n", filename);
     return 0;
 }
 
@@ -323,6 +326,8 @@ int informa(const char *filename) {
     strftime(time_str, sizeof(time_str), "%Y-%m-%d %H:%M:%S", localtime(&file_stat.st_mtime));
     printf("Data da última modificação: %s\n", time_str);
     
+    printf("\n\nInformações do ficheiro '%s' mostradas com sucesso.\n", filename);
+
     return 0;
 }
 
@@ -385,5 +390,6 @@ int lista(const char *path) {
     
     // Fechar diretoria
     closedir(dir);
+    printf("\n\nConteúdo da diretoria listado com sucesso.\n");
     return 0;
 }
