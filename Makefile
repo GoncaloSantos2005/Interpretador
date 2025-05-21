@@ -1,3 +1,4 @@
+# Compilação do interpretador
 CC = gcc
 CFLAGS = -Wall -Wextra -g
 

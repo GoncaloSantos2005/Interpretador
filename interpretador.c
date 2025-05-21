@@ -1,5 +1,14 @@
-// interpretador.c
-// Implementação de um interpretador de linha de comandos
+/**
+ * @file interpretador.c
+ * @brief Interpretador de linha de comandos para manipulação de ficheiros e diretórios.
+ *
+ * Este ficheiro implementa um interpretador simples que permite ao utilizador executar comandos
+ * personalizados para manipulação de ficheiros (mostra, copia, acrescenta, conta, apaga, informa, lista)
+ * ou comandos do sistema. Utiliza funções definidas em comandos_ficheiros.h.
+ *
+ * @author Gonçalo e Rodrigo
+ * @date 2025
+ */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -11,7 +20,12 @@
 #define MAX_COMMAND_LENGTH 1024
 #define MAX_ARGS 64
 
-// Função para analisar um comando e separar em argumentos
+/**
+ * @brief Analisa uma linha de comando e separa em argumentos.
+ * @param cmd String com o comando a analisar (modificada pela função).
+ * @param args Array de strings onde serão colocados os argumentos.
+ * @return Número de argumentos encontrados.
+ */
 int parse_command(char *cmd, char *args[]) {
     int i = 0;
     char *token;
@@ -33,7 +47,11 @@ int parse_command(char *cmd, char *args[]) {
     return i;  // Retorna o número de argumentos
 }
 
-// Função para executar um comando do nosso conjunto de comandos
+/**
+ * @brief Executa um comando personalizado, se existir.
+ * @param args Array de argumentos do comando.
+ * @return Código de retorno do comando executado, ou -1 se não for personalizado.
+ */
 int execute_custom_command(char *args[]) {
     if (args[0] == NULL) {
         return 0;
@@ -91,6 +109,10 @@ int execute_custom_command(char *args[]) {
     }
 }
 
+/**
+ * @brief Função principal do interpretador.
+ * @return 0 ao terminar.
+ */
 int main() {
     char command[MAX_COMMAND_LENGTH];
     char *args[MAX_ARGS];

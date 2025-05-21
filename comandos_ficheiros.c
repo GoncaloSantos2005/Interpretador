@@ -1,5 +1,13 @@
-// comandos_ficheiros.c
-// Implementação de comandos para manipulação de ficheiros usando system calls
+/**
+ * @file comandos_ficheiros.c
+ * @brief Implementação de comandos para manipulação de ficheiros usando system calls.
+ * 
+ * Este ficheiro contém funções para mostrar, copiar, acrescentar, contar linhas,
+ * apagar, informar e listar ficheiros e diretórios, utilizando chamadas de sistema POSIX.
+ * 
+ * @author Gonçalo e Rodrigo
+ * @date 2025
+ */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -12,7 +20,16 @@
 #include <time.h>
 #include <pwd.h>
 
-// Função para mostrar conteúdo de um ficheiro
+/// @brief Mostra o conteúdo de um ficheiro no terminal.
+/// @author Gonçalo 
+/// @param filename Nome do ficheiro a ser mostrado.
+/// @return 0 em caso de sucesso, 1 em caso de erro.
+/// @details
+/// Abre o ficheiro especificado em modo leitura e escreve o seu conteúdo no STDOUT.
+/// Utiliza as variáveis:
+/// - fd: descritor do ficheiro aberto
+/// - n: número de bytes lidos
+/// - buffer: buffer temporário para leitura
 int mostra(const char *filename) {
     int fd, n;
     char buffer[4096];
@@ -34,7 +51,18 @@ int mostra(const char *filename) {
     return 0;
 }
 
-// Função para copiar um ficheiro
+/// @brief Copia um ficheiro para um novo ficheiro com extensão ".copia".
+/// @author Rodrigo
+/// @param filename Nome do ficheiro de origem.
+/// @return 0 em caso de sucesso, 1 em caso de erro.
+/// @details
+/// Cria um novo ficheiro com o mesmo nome acrescido de ".copia" e copia o conteúdo.
+/// Variáveis:
+/// - fd_src: descritor do ficheiro de origem
+/// - fd_dest: descritor do ficheiro de destino
+/// - n: número de bytes lidos
+/// - buffer: buffer temporário
+/// - dest_filename: nome do ficheiro de destino
 int copia(const char *filename) {
     int fd_src, fd_dest, n;
     char buffer[4096];
@@ -77,7 +105,19 @@ int copia(const char *filename) {
     return 0;
 }
 
-// Função para acrescentar conteúdo de um ficheiro a outro
+/// @brief Acrescenta o conteúdo de um ficheiro ao final de outro ficheiro.
+/// @author Gonçalo
+/// @param origem Nome do ficheiro de origem.
+/// @param destino Nome do ficheiro de destino.
+/// @return 0 em caso de sucesso, 1 em caso de erro.
+/// @details
+/// Abre ambos os ficheiros, verifica se são diferentes, e acrescenta o conteúdo.
+/// Variáveis:
+/// - fd_src: descritor do ficheiro de origem
+/// - fd_dest: descritor do ficheiro de destino
+/// - n: número de bytes lidos
+/// - buffer: buffer temporário
+/// - stat_src, stat_dest: estruturas stat para verificação de ficheiros
 int acrescenta(const char *origem, const char *destino) {
     int fd_src, fd_dest, n;
     char buffer[4096];
@@ -147,7 +187,17 @@ int acrescenta(const char *origem, const char *destino) {
     return 0;
 }
 
-// Função para contar linhas de um ficheiro
+/// @brief Conta o número de linhas de um ficheiro.
+/// @author Rodrigo
+/// @param filename Nome do ficheiro.
+/// @return 0 em caso de sucesso, 1 em caso de erro.
+/// @details
+/// Lê o ficheiro e conta o número de caracteres '\n'.
+/// Variáveis:
+/// - fd: descritor do ficheiro
+/// - n: número de bytes lidos
+/// - buffer: buffer temporário
+/// - line_count: contador de linhas
 int conta(const char *filename) {
     int fd, n;
     char buffer[4096];
@@ -182,7 +232,14 @@ int conta(const char *filename) {
     return 0;
 }
 
-// Função para apagar um ficheiro
+/// @brief Apaga (remove) um ficheiro do sistema de ficheiros.
+/// @author Gonçalo
+/// @param filename Nome do ficheiro a remover.
+/// @return 0 em caso de sucesso, 1 em caso de erro.
+/// @details
+/// Verifica se o ficheiro existe e tenta removê-lo.
+/// Variáveis:
+/// - st: estrutura stat para verificar existência
 int apaga(const char *filename) {
     struct stat st;
 
@@ -202,7 +259,16 @@ int apaga(const char *filename) {
     return 0;
 }
 
-// Função para obter informações de um ficheiro
+/// @brief Mostra informações detalhadas sobre um ficheiro.
+/// @author Rodrigo
+/// @param filename Nome do ficheiro.
+/// @return 0 em caso de sucesso, 1 em caso de erro.
+/// @details
+/// Mostra tipo, inode, dono, datas de criação, acesso e modificação.
+/// Variáveis:
+/// - file_stat: estrutura stat com informações do ficheiro
+/// - pw: estrutura passwd para obter nome do dono
+/// - time_str: buffer para datas formatadas
 int informa(const char *filename) {
     struct stat file_stat;
     struct passwd *pw;
@@ -260,7 +326,17 @@ int informa(const char *filename) {
     return 0;
 }
 
-// Função para listar conteúdo de uma diretoria
+/// @brief Lista o conteúdo de uma diretoria, mostrando o tipo de cada entrada.
+/// @author Gonçalo
+/// @param path Caminho da diretoria (se NULL, usa a atual).
+/// @return 0 em caso de sucesso, 1 em caso de erro.
+/// @details
+/// Percorre a diretoria e mostra o nome e tipo de cada entrada.
+/// Variáveis:
+/// - dir: ponteiro para a diretoria aberta
+/// - entry: entrada lida da diretoria
+/// - file_stat: estrutura stat para obter tipo
+/// - full_path: caminho completo para cada entrada
 int lista(const char *path) {
     DIR *dir;
     struct dirent *entry;
