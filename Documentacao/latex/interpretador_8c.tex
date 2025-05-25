@@ -1,0 +1,107 @@
+\doxysection{interpretador.\+c File Reference}
+\hypertarget{interpretador_8c}{}\label{interpretador_8c}\index{interpretador.c@{interpretador.c}}
+
+
+Interpretador de Linha de Comandos em C.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$sys/wait.\+h$>$}\newline
+{\ttfamily \#include "{}comandos\+\_\+ficheiros.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{interpretador_8c_af1abcb51a4aa27a5a5a7958c03448134}{MAX\+\_\+\+COMMAND\+\_\+\+LENGTH}}~1024
+\item 
+\#define \mbox{\hyperlink{interpretador_8c_a29b7451465deac204c5f7cb1f9c6e1fc}{MAX\+\_\+\+ARGS}}~64
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{interpretador_8c_add57b6d64f96fbfb596be98052a1ee00}{parse\+\_\+command}} (char \texorpdfstring{$\ast$}{*}cmd, char \texorpdfstring{$\ast$}{*}args\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Analisa uma linha de comando e separa em argumentos. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{interpretador_8c_a9ab53e8308a175ec404abbc6621b9643}{execute\+\_\+custom\+\_\+command}} (char \texorpdfstring{$\ast$}{*}args\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Executa um comando personalizado, se existir. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{interpretador_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em Função principal do interpretador. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interpretador de Linha de Comandos em C. 
+
+
+
+\label{doc-define-members}
+\Hypertarget{interpretador_8c_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{interpretador_8c_a29b7451465deac204c5f7cb1f9c6e1fc}\index{interpretador.c@{interpretador.c}!MAX\_ARGS@{MAX\_ARGS}}
+\index{MAX\_ARGS@{MAX\_ARGS}!interpretador.c@{interpretador.c}}
+\doxysubsubsection{\texorpdfstring{MAX\_ARGS}{MAX\_ARGS}}
+{\footnotesize\ttfamily \label{interpretador_8c_a29b7451465deac204c5f7cb1f9c6e1fc} 
+\#define MAX\+\_\+\+ARGS~64}
+
+\Hypertarget{interpretador_8c_af1abcb51a4aa27a5a5a7958c03448134}\index{interpretador.c@{interpretador.c}!MAX\_COMMAND\_LENGTH@{MAX\_COMMAND\_LENGTH}}
+\index{MAX\_COMMAND\_LENGTH@{MAX\_COMMAND\_LENGTH}!interpretador.c@{interpretador.c}}
+\doxysubsubsection{\texorpdfstring{MAX\_COMMAND\_LENGTH}{MAX\_COMMAND\_LENGTH}}
+{\footnotesize\ttfamily \label{interpretador_8c_af1abcb51a4aa27a5a5a7958c03448134} 
+\#define MAX\+\_\+\+COMMAND\+\_\+\+LENGTH~1024}
+
+
+
+\label{doc-func-members}
+\Hypertarget{interpretador_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{interpretador_8c_a9ab53e8308a175ec404abbc6621b9643}\index{interpretador.c@{interpretador.c}!execute\_custom\_command@{execute\_custom\_command}}
+\index{execute\_custom\_command@{execute\_custom\_command}!interpretador.c@{interpretador.c}}
+\doxysubsubsection{\texorpdfstring{execute\_custom\_command()}{execute\_custom\_command()}}
+{\footnotesize\ttfamily \label{interpretador_8c_a9ab53e8308a175ec404abbc6621b9643} 
+int execute\+\_\+custom\+\_\+command (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{args}{\mbox{[}$\,$\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+Executa um comando personalizado, se existir. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & Array de argumentos do comando. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Código de retorno do comando executado, ou -\/1 se não for personalizado. 
+\end{DoxyReturn}
+\Hypertarget{interpretador_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}\index{interpretador.c@{interpretador.c}!main@{main}}
+\index{main@{main}!interpretador.c@{interpretador.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{interpretador_8c_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+int main (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Função principal do interpretador. 
+
+\begin{DoxyReturn}{Returns}
+0 ao terminar. 
+\end{DoxyReturn}
+\Hypertarget{interpretador_8c_add57b6d64f96fbfb596be98052a1ee00}\index{interpretador.c@{interpretador.c}!parse\_command@{parse\_command}}
+\index{parse\_command@{parse\_command}!interpretador.c@{interpretador.c}}
+\doxysubsubsection{\texorpdfstring{parse\_command()}{parse\_command()}}
+{\footnotesize\ttfamily \label{interpretador_8c_add57b6d64f96fbfb596be98052a1ee00} 
+int parse\+\_\+command (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{cmd}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{args}{\mbox{[}$\,$\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+Analisa uma linha de comando e separa em argumentos. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cmd} & String com o comando a analisar (modificada pela função). \\
+\hline
+{\em args} & Array de strings onde serão colocados os argumentos. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Número de argumentos encontrados. 
+\end{DoxyReturn}

@@ -1,13 +1,30 @@
 /**
  * @file interpretador.c
- * @brief Interpretador de linha de comandos para manipulação de ficheiros e diretórios.
+ * @brief Interpretador de Linha de Comandos em C
  *
- * Este ficheiro implementa um interpretador simples que permite ao utilizador executar comandos
- * personalizados para manipulação de ficheiros (mostra, copia, acrescenta, conta, apaga, informa, lista)
- * ou comandos do sistema. Utiliza funções definidas em comandos_ficheiros.h.
+ * @mainpage Projeto de Sistemas Operativos - Interpretador de Linha de Comandos
  *
- * @author Gonçalo e Rodrigo
- * @date 2025
+ * Este projeto tem como objetivo desenvolver um interpretador de linha de comandos simples,
+ * capaz de executar comandos personalizados (como `mostra` e `lista`) e comandos do sistema Unix/Linux.
+ * 
+ * O interpretador funciona em ciclo contínuo até ser introduzido o comando `termina`.
+ * É responsável por interpretar a linha de entrada, separar argumentos, tratar comandos inválidos,
+ * executar processos (com fork e execvp) e reportar o código de saída de cada comando.
+ * 
+ * Funcionalidades principais:
+ * - Execução de comandos personalizados
+ * - Execução de comandos do sistema
+ * - Gestão de processos com fork e waitpid
+ * - Tratamento de erros e mensagens de ajuda
+ * - Separação modular do código para facilitar manutenção e extensibilidade
+ *
+ * O projeto foi desenvolvido no contexto da unidade curricular de Sistemas Operativos do curso de
+ * Engenharia de Sistemas Informáticos no Instituto Politécnico do Cávado e do Ave (IPCA).
+ *
+ * @author
+ * Gonçalo Santos e Rodrigo Cruz
+ * 
+ * @date Maio de 2025
  */
 
 #include <stdio.h>

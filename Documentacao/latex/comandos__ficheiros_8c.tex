@@ -1,0 +1,252 @@
+\doxysection{comandos\+\_\+ficheiros.\+c File Reference}
+\hypertarget{comandos__ficheiros_8c}{}\label{comandos__ficheiros_8c}\index{comandos\_ficheiros.c@{comandos\_ficheiros.c}}
+
+
+Implementação de comandos para manipulação de ficheiros usando system calls.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
+{\ttfamily \#include $<$sys/stat.\+h$>$}\newline
+{\ttfamily \#include $<$sys/types.\+h$>$}\newline
+{\ttfamily \#include $<$dirent.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$pwd.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{comandos__ficheiros_8c_af3307a443955da755170cdfacabddc9c}{mostra}} (const char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Mostra o conteúdo de um ficheiro no terminal. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{comandos__ficheiros_8c_a2c75315fed9331d79c0b7b2400920c53}{copia}} (const char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Copia um ficheiro para um novo ficheiro com extensão "{}.\+copia"{}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{comandos__ficheiros_8c_ad1a03e9245df57cd12b1e0f2e7291634}{acrescenta}} (const char \texorpdfstring{$\ast$}{*}origem, const char \texorpdfstring{$\ast$}{*}destino)
+\begin{DoxyCompactList}\small\item\em Acrescenta o conteúdo de um ficheiro ao final de outro ficheiro. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{comandos__ficheiros_8c_a8273a99ee940a4e0abdfec79c3ef2872}{conta}} (const char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Conta o número de linhas de um ficheiro. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{comandos__ficheiros_8c_acfa172c686c4a23ae3ed01ae408ace54}{apaga}} (const char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Apaga (remove) um ficheiro do sistema de ficheiros. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{comandos__ficheiros_8c_abf82a3cc645a14d9f55a4cf350515d3b}{informa}} (const char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Mostra informações detalhadas sobre um ficheiro. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{comandos__ficheiros_8c_a7e82f1e8ffee8579d174126f9579d7ad}{lista}} (const char \texorpdfstring{$\ast$}{*}path)
+\begin{DoxyCompactList}\small\item\em Lista o conteúdo de uma diretoria, mostrando o tipo de cada entrada. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementação de comandos para manipulação de ficheiros usando system calls. 
+
+Este ficheiro contém funções para mostrar, copiar, acrescentar, contar linhas, apagar, informar e listar ficheiros e diretórios, utilizando chamadas de sistema POSIX.
+
+\begin{DoxyAuthor}{Author}
+Gonçalo e Rodrigo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 
+\end{DoxyDate}
+
+
+\label{doc-func-members}
+\Hypertarget{comandos__ficheiros_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{comandos__ficheiros_8c_ad1a03e9245df57cd12b1e0f2e7291634}\index{comandos\_ficheiros.c@{comandos\_ficheiros.c}!acrescenta@{acrescenta}}
+\index{acrescenta@{acrescenta}!comandos\_ficheiros.c@{comandos\_ficheiros.c}}
+\doxysubsubsection{\texorpdfstring{acrescenta()}{acrescenta()}}
+{\footnotesize\ttfamily \label{comandos__ficheiros_8c_ad1a03e9245df57cd12b1e0f2e7291634} 
+int acrescenta (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{origem}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{destino}{}\end{DoxyParamCaption})}
+
+
+
+Acrescenta o conteúdo de um ficheiro ao final de outro ficheiro. 
+
+Acrescenta o conteúdo de um ficheiro no final de outro.
+
+\begin{DoxyAuthor}{Author}
+Gonçalo 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em origem} & Nome do ficheiro de origem. \\
+\hline
+{\em destino} & Nome do ficheiro de destino. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 em caso de sucesso, 1 em caso de erro.
+\end{DoxyReturn}
+Abre ambos os ficheiros, verifica se são diferentes, e acrescenta o conteúdo. Variáveis\+:
+\begin{DoxyItemize}
+\item fd\+\_\+src\+: descritor do ficheiro de origem
+\item fd\+\_\+dest\+: descritor do ficheiro de destino
+\item n\+: número de bytes lidos
+\item buffer\+: buffer temporário
+\item stat\+\_\+src, stat\+\_\+dest\+: estruturas stat para verificação de ficheiros 
+\end{DoxyItemize}\Hypertarget{comandos__ficheiros_8c_acfa172c686c4a23ae3ed01ae408ace54}\index{comandos\_ficheiros.c@{comandos\_ficheiros.c}!apaga@{apaga}}
+\index{apaga@{apaga}!comandos\_ficheiros.c@{comandos\_ficheiros.c}}
+\doxysubsubsection{\texorpdfstring{apaga()}{apaga()}}
+{\footnotesize\ttfamily \label{comandos__ficheiros_8c_acfa172c686c4a23ae3ed01ae408ace54} 
+int apaga (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Apaga (remove) um ficheiro do sistema de ficheiros. 
+
+Apaga um ficheiro.
+
+\begin{DoxyAuthor}{Author}
+Gonçalo 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Nome do ficheiro a remover. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 em caso de sucesso, 1 em caso de erro.
+\end{DoxyReturn}
+Verifica se o ficheiro existe e tenta removê-\/lo. Variáveis\+:
+\begin{DoxyItemize}
+\item st\+: estrutura stat para verificar existência 
+\end{DoxyItemize}\Hypertarget{comandos__ficheiros_8c_a8273a99ee940a4e0abdfec79c3ef2872}\index{comandos\_ficheiros.c@{comandos\_ficheiros.c}!conta@{conta}}
+\index{conta@{conta}!comandos\_ficheiros.c@{comandos\_ficheiros.c}}
+\doxysubsubsection{\texorpdfstring{conta()}{conta()}}
+{\footnotesize\ttfamily \label{comandos__ficheiros_8c_a8273a99ee940a4e0abdfec79c3ef2872} 
+int conta (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Conta o número de linhas de um ficheiro. 
+
+\begin{DoxyAuthor}{Author}
+Rodrigo 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Nome do ficheiro. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 em caso de sucesso, 1 em caso de erro.
+\end{DoxyReturn}
+Lê o ficheiro e conta o número de caracteres \textquotesingle{}~\newline
+\textquotesingle{}. Variáveis\+:
+\begin{DoxyItemize}
+\item fd\+: descritor do ficheiro
+\item n\+: número de bytes lidos
+\item buffer\+: buffer temporário
+\item line\+\_\+count\+: contador de linhas 
+\end{DoxyItemize}\Hypertarget{comandos__ficheiros_8c_a2c75315fed9331d79c0b7b2400920c53}\index{comandos\_ficheiros.c@{comandos\_ficheiros.c}!copia@{copia}}
+\index{copia@{copia}!comandos\_ficheiros.c@{comandos\_ficheiros.c}}
+\doxysubsubsection{\texorpdfstring{copia()}{copia()}}
+{\footnotesize\ttfamily \label{comandos__ficheiros_8c_a2c75315fed9331d79c0b7b2400920c53} 
+int copia (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Copia um ficheiro para um novo ficheiro com extensão "{}.\+copia"{}. 
+
+Copia o conteúdo de um ficheiro para um novo ficheiro com extensão .copia.
+
+\begin{DoxyAuthor}{Author}
+Rodrigo 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Nome do ficheiro de origem. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 em caso de sucesso, 1 em caso de erro.
+\end{DoxyReturn}
+Cria um novo ficheiro com o mesmo nome acrescido de "{}.\+copia"{} e copia o conteúdo. Variáveis\+:
+\begin{DoxyItemize}
+\item fd\+\_\+src\+: descritor do ficheiro de origem
+\item fd\+\_\+dest\+: descritor do ficheiro de destino
+\item n\+: número de bytes lidos
+\item buffer\+: buffer temporário
+\item dest\+\_\+filename\+: nome do ficheiro de destino 
+\end{DoxyItemize}\Hypertarget{comandos__ficheiros_8c_abf82a3cc645a14d9f55a4cf350515d3b}\index{comandos\_ficheiros.c@{comandos\_ficheiros.c}!informa@{informa}}
+\index{informa@{informa}!comandos\_ficheiros.c@{comandos\_ficheiros.c}}
+\doxysubsubsection{\texorpdfstring{informa()}{informa()}}
+{\footnotesize\ttfamily \label{comandos__ficheiros_8c_abf82a3cc645a14d9f55a4cf350515d3b} 
+int informa (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Mostra informações detalhadas sobre um ficheiro. 
+
+Apresenta informações de um ficheiro.
+
+\begin{DoxyAuthor}{Author}
+Rodrigo 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Nome do ficheiro. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 em caso de sucesso, 1 em caso de erro.
+\end{DoxyReturn}
+Mostra tipo, inode, dono, datas de criação, acesso e modificação. Variáveis\+:
+\begin{DoxyItemize}
+\item file\+\_\+stat\+: estrutura stat com informações do ficheiro
+\item pw\+: estrutura passwd para obter nome do dono
+\item time\+\_\+str\+: buffer para datas formatadas 
+\end{DoxyItemize}\Hypertarget{comandos__ficheiros_8c_a7e82f1e8ffee8579d174126f9579d7ad}\index{comandos\_ficheiros.c@{comandos\_ficheiros.c}!lista@{lista}}
+\index{lista@{lista}!comandos\_ficheiros.c@{comandos\_ficheiros.c}}
+\doxysubsubsection{\texorpdfstring{lista()}{lista()}}
+{\footnotesize\ttfamily \label{comandos__ficheiros_8c_a7e82f1e8ffee8579d174126f9579d7ad} 
+int lista (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{path}{}\end{DoxyParamCaption})}
+
+
+
+Lista o conteúdo de uma diretoria, mostrando o tipo de cada entrada. 
+
+Lista o conteúdo de uma diretoria.
+
+\begin{DoxyAuthor}{Author}
+Gonçalo 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Caminho da diretoria (se NULL, usa a atual). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 em caso de sucesso, 1 em caso de erro.
+\end{DoxyReturn}
+Percorre a diretoria e mostra o nome e tipo de cada entrada. Variáveis\+:
+\begin{DoxyItemize}
+\item dir\+: ponteiro para a diretoria aberta
+\item entry\+: entrada lida da diretoria
+\item file\+\_\+stat\+: estrutura stat para obter tipo
+\item full\+\_\+path\+: caminho completo para cada entrada 
+\end{DoxyItemize}\Hypertarget{comandos__ficheiros_8c_af3307a443955da755170cdfacabddc9c}\index{comandos\_ficheiros.c@{comandos\_ficheiros.c}!mostra@{mostra}}
+\index{mostra@{mostra}!comandos\_ficheiros.c@{comandos\_ficheiros.c}}
+\doxysubsubsection{\texorpdfstring{mostra()}{mostra()}}
+{\footnotesize\ttfamily \label{comandos__ficheiros_8c_af3307a443955da755170cdfacabddc9c} 
+int mostra (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Mostra o conteúdo de um ficheiro no terminal. 
+
+\begin{DoxyAuthor}{Author}
+Gonçalo 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Nome do ficheiro a ser mostrado. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 em caso de sucesso, 1 em caso de erro.
+\end{DoxyReturn}
+Abre o ficheiro especificado em modo leitura e escreve o seu conteúdo no STDOUT. Utiliza as variáveis\+:
+\begin{DoxyItemize}
+\item fd\+: descritor do ficheiro aberto
+\item n\+: número de bytes lidos
+\item buffer\+: buffer temporário para leitura 
+\end{DoxyItemize}

@@ -1,0 +1,23 @@
+\chapter{Projeto de Sistemas Operativos -\/ Interpretador de Linha de Comandos }
+\hypertarget{index}{}\label{index}\index{Projeto de Sistemas Operativos -\/ Interpretador de Linha de Comandos@{Projeto de Sistemas Operativos -\/ Interpretador de Linha de Comandos}}
+Este projeto tem como objetivo desenvolver um interpretador de linha de comandos simples, capaz de executar comandos personalizados (como {\ttfamily mostra} e {\ttfamily lista}) e comandos do sistema Unix/\+Linux.
+
+O interpretador funciona em ciclo contínuo até ser introduzido o comando {\ttfamily termina}. É responsável por interpretar a linha de entrada, separar argumentos, tratar comandos inválidos, executar processos (com fork e execvp) e reportar o código de saída de cada comando.
+
+Funcionalidades principais\+:
+\begin{DoxyItemize}
+\item Execução de comandos personalizados
+\item Execução de comandos do sistema
+\item Gestão de processos com fork e waitpid
+\item Tratamento de erros e mensagens de ajuda
+\item Separação modular do código para facilitar manutenção e extensibilidade
+\end{DoxyItemize}
+
+O projeto foi desenvolvido no contexto da unidade curricular de Sistemas Operativos do curso de Engenharia de Sistemas Informáticos no Instituto Politécnico do Cávado e do Ave (IPCA).
+
+\begin{DoxyAuthor}{Author}
+Gonçalo Santos e Rodrigo Cruz
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+Maio de 2025 
+\end{DoxyDate}
